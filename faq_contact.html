@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Frequently Asked Questions and secure contact portal for PINK PILLED™.">
+    <title>FAQ & Contact | PINK PILLED™</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://unwellbutrin.art/SITE%20MEDIA/PNKPLLD.png">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-color: #ff66b3;
+            --primary-dark: #ff4da6;
+            --primary-light: #ffcce5;
+            --secondary-color: #10B981;
+            --navy-dark: #0a192f;
+            --text-color: #1F2937;
+            --text-muted: #6B7280;
+            --bg-white: #FFFFFF;
+            --bg-light: #F9FAFB;
+            --border-color: #E5E7EB;
+            --font-main: 'Inter', sans-serif;
+            --transition: all 0.3s ease;
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--font-main); color: var(--text-color); line-height: 1.6; background-color: var(--bg-light); -webkit-font-smoothing: antialiased; }
+        a { text-decoration: none; color: inherit; transition: var(--transition); }
+        ul { list-style: none; }
+        
+        .container { width: 90%; max-width: 1200px; margin: 0 auto; padding: 0 15px; }
+        .section-padding { padding: 100px 0; }
+        .text-center { text-align: center; }
+
+        .navbar { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; background-color: white; padding: 8px 0; border-bottom: 1px solid var(--border-color); box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.4rem; font-weight: 800; color: var(--primary-color); display: flex; align-items: center; gap: 15px; }
+        .logo-img { height: 80px; width: auto; object-fit: contain; }
+        .logo .dot { color: var(--primary-color); }
+        .nav-links { display: flex; align-items: center; gap: 30px; }
+        .nav-links a { font-weight: 500; color: var(--text-color); font-size: 0.95rem; }
+        .nav-links a:hover, .nav-links a.active { color: var(--primary-color); }
+
+        /* Buttons */
+        .btn { display: inline-block; padding: 14px 32px; border-radius: 8px; font-weight: 600; cursor: pointer; transition: var(--transition); border: 2px solid transparent; text-align: center; }
+        .btn-primary { background-color: var(--primary-color); color: white; }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(255, 102, 179, 0.3); }
+        .btn-sm { padding: 10px 24px; font-size: 0.9rem; }
+        .btn-block { display: block; width: 100%; }
+
+        .page-header {
+            padding: 180px 0 80px;
+            background: linear-gradient(135deg, var(--navy-dark) 0%, #1b2c45 100%);
+            color: white;
+            text-align: center;
+            border-bottom: 4px solid var(--primary-color);
+        }
+        .page-title { font-size: 3.5rem; margin-bottom: 20px; font-weight: 800; }
+        .page-title span { color: var(--primary-color); text-shadow: 0 0 20px rgba(255, 102, 179, 0.4); }
+        .page-subtitle { font-size: 1.2rem; color: #D1D5DB; max-width: 800px; margin: 0 auto; }
+
+        .faq-wrapper { max-width: 800px; margin: 0 auto 80px; }
+        .faq-item {
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            transition: var(--transition);
+        }
+        .faq-item:hover { border-color: var(--primary-color); box-shadow: var(--shadow-md); }
+        .faq-item.active { border-color: var(--primary-color); box-shadow: var(--shadow-md); }
+        
+        .faq-question {
+            padding: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1.15rem;
+            color: var(--navy-dark);
+        }
+        .faq-question i { color: var(--primary-color); transition: transform 0.3s ease; font-size: 1.2rem; }
+        .faq-item.active .faq-question i { transform: rotate(180deg); }
+        
+        .faq-answer {
+            padding: 0 24px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out, padding 0.4s ease;
+            color: var(--text-muted);
+            font-size: 1.05rem;
+        }
+        .faq-item.active .faq-answer { padding-bottom: 24px; max-height: 1000px; /* arbitrary large number for transition */ }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        .contact-info-card {
+            background: var(--navy-dark);
+            color: white;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: var(--shadow-lg);
+            position: sticky;
+            top: 120px;
+        }
+        .contact-info-card h3 { font-size: 1.8rem; margin-bottom: 15px; color: white; }
+        .contact-info-card p { color: #9CA3AF; margin-bottom: 30px; }
+        
+        .info-line { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; font-size: 1.05rem; }
+        .info-line i { color: var(--primary-color); font-size: 1.3rem; width: 24px; text-align: center; }
+        .info-line span a { color: white; transition: color 0.3s ease; }
+        .info-line span a:hover { color: var(--primary-color); }
+
+        .form-wrapper {
+            background: white;
+            padding: 50px;
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-lg);
+        }
+        .form-header { margin-bottom: 30px; padding-bottom: 20px; border-bottom: 1px solid var(--border-color); }
+        .form-header h2 { color: var(--navy-dark); font-size: 2rem; margin-bottom: 10px; }
+        .form-header p { color: var(--text-muted); }
+
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px; }
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-color); font-size: 0.95rem; }
+        
+        .form-control { 
+            width: 100%; 
+            padding: 14px; 
+            border: 1px solid var(--border-color); 
+            border-radius: 8px; 
+            font-family: inherit; 
+            font-size: 1rem; 
+            background: var(--bg-light);
+            transition: var(--transition); 
+        }
+        .form-control:focus { 
+            outline: none; 
+            border-color: var(--primary-color); 
+            background: white;
+            box-shadow: 0 0 0 4px rgba(255, 102, 179, 0.1); 
+        }
+        select.form-control { cursor: pointer; appearance: none; background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%231F2937%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E"); background-repeat: no-repeat; background-position: right 1rem top 50%; background-size: 0.65rem auto; }
+        textarea.form-control { resize: vertical; min-height: 150px; }
+
+        .form-disclaimer {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 25px;
+            padding: 15px;
+            background: #FEF2F2;
+            border-left: 3px solid #EF4444;
+            border-radius: 4px;
+        }
+
+        .footer { padding-top: 80px; border-top: 1px solid var(--border-color); background: white; margin-top: 60px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; padding-bottom: 60px; }
+        .footer-brand p { color: var(--text-muted); margin-top: 15px; font-size: 0.95rem; }
+        .footer-links h4 { font-size: 1.1rem; margin-bottom: 20px; }
+        .footer-links ul li { margin-bottom: 12px; }
+        .footer-links ul li a { color: var(--text-muted); font-size: 0.9rem; }
+        .footer-links ul li a:hover { color: var(--primary-color); }
+        .footer-bottom { border-top: 1px solid var(--border-color); padding: 30px 0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; font-size: 0.9rem; color: var(--text-muted); }
+
+        @media (max-width: 991px) {
+            .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+            .contact-info-card { position: relative; top: 0; }
+            .form-row { grid-template-columns: 1fr; gap: 0; }
+            .form-wrapper { padding: 30px 20px; }
+        }
+
+        .fade-in { opacity: 0; transform: translateY(20px); transition: 0.6s ease-out; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <img src="https://unwellbutrin.art/SITE%20MEDIA/PNKPLLD.png" alt="PINK PILLED Logo" class="logo-img" onerror="this.src='https://placehold.co/80x80/ff66b3/ffffff?text=PP'">
+                <span>PINK PILLED<span class="dot">™</span></span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="research.html">Research & Development</a></li>
+                <li><a href="contractor.html" class="btn btn-primary btn-sm" style="color: white;">Become a Contractor</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <div class="container">
+            <h1 class="page-title fade-in">Intel & <span>Comms</span></h1>
+            <p class="page-subtitle fade-in">Find answers to common questions about our Masterclass, Shadowing Program, and Defense Acquisition. For direct inquiries, utilize the secure comms portal below.</p>
+        </div>
+    </header>
+
+    <section class="section-padding" style="padding-bottom: 40px;">
+        <div class="container">
+            
+            <div class="text-center fade-in" style="margin-bottom: 40px;">
+                <h2 style="font-size: 2.2rem; color: var(--navy-dark);">Frequently Asked Questions</h2>
+            </div>
+
+            <div class="faq-wrapper fade-in">
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What exactly does PINK PILLED™ do?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>PINK PILLED™ operates as a non-traditional Federal Prime Contractor and strategic consulting firm. We specialize in rapidly bridging the gap between innovative commercial technology (like bioinformatics and advanced data tools) and critical Department of Defense requirements. We also offer specialized training to help disadvantaged groups secure their own federal contracts.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Do I need prior government experience to take the Masterclass?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>No. Our Federal Prime Contracting Masterclass is designed to take you from absolute zero to submitting winning proposals. We walk you through establishing your LLC, navigating SAM.gov, identifying your specific niche, and drafting technical documents using our proprietary operational blueprints.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What is the CEO Shadowing Program?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>The Shadowing Program is the final phase of our Masterclass curriculum. Once your digital ecosystem and SAM.gov registration are complete, our leadership team actively reviews your Scope of Work (SOW). If there is a strategic fit, we offer direct mentorship and evaluate you for integration into our live Sub-Contractor pipeline for active federal solicitations.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Are you affiliated with the government?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>No. PINK PILLED™ is a private commercial entity registered as a contractor within the System for Award Management (SAM). We are not a government agency, nor are we endorsed by the DoD, DARPA, or the SBA.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        How does "Non-Dilutive Funding" work for R&D?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Federal agencies (like DARPA or NIH) often fund research and prototypes through mechanisms like SBIRs (Small Business Innovation Research) or OTAs (Other Transaction Authorities). This means the government pays you to develop your technology without taking any equity or ownership of your company—you keep your IP. PINK PILLED™ acts as a Project Manager to help you secure this funding.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Do you offer payment plans for the Master Curriculum?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes. While you can purchase the entire curriculum and shadowing program upfront for $749.99, we also offer flexible monthly payment plans through our secure checkout processor (Stripe/Klarna/Afterpay) to ensure the knowledge is accessible.</p>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div id="contact-form" class="contact-grid">
+                
+                <!-- Info Column -->
+                <div class="contact-info-card fade-in">
+                    <h3>Secure Comms</h3>
+                    <p>Whether you are submitting an R&D prototype for review, inquiring about our talent acquisition pipeline, or asking a question about our Master Curriculum, our team is ready to respond.</p>
+                    
+                    <div class="info-line">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Columbus, OH (HQ)</span>
+                    </div>
+                    <div class="info-line">
+                        <i class="fas fa-envelope"></i>
+                        <span><a href="mailto:ask@pinkpilled.life">ask@pinkpilled.life</a></span>
+                    </div>
+                    <div class="info-line" style="align-items: flex-start;">
+                        <i class="fas fa-phone" style="margin-top: 5px;"></i>
+                        <span>
+                            <a href="tel:+17402534634">+1 (740) 253-4634</a><br>
+                            <span style="font-size: 0.9rem; color: #6B7280;">(Call, or text is preferred for faster routing)</span>
+                        </span>
+                    </div>
+
+                    <div style="margin-top: 40px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 30px;">
+                        <h4 style="font-size: 1.1rem; margin-bottom: 15px; color: white;">Connect on Social</h4>
+                        <div style="display: flex; gap: 20px; font-size: 1.5rem;">
+                            <a href="https://www.linkedin.com/in/mflogistics/" target="_blank" style="color: white; transition: color 0.3s ease;"><i class="fab fa-linkedin"></i></a>
+                            <a href="https://github.com/megfrench" target="_blank" style="color: white; transition: color 0.3s ease;"><i class="fab fa-github"></i></a>
+                            <a href="https://www.tiktok.com/@prozacncheese" target="_blank" style="color: white; transition: color 0.3s ease;"><i class="fa-brands fa-tiktok"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form Column -->
+                <div class="form-wrapper fade-in">
+                    <div class="form-header">
+                        <h2>Initiate Contact</h2>
+                        <p>Fill out the dossier below. A member of our executive team will review your submission and respond within 24-48 business hours.</p>
+                    </div>
+
+                    <!-- New Formspree Endpoint for General Contact -->
+                    <form action="https://formspree.io/f/xbdnydav" method="POST" id="mainContactForm">
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName">First Name *</label>
+                                <input type="text" id="firstName" name="First Name" class="form-control" required placeholder="Jane">
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Last Name *</label>
+                                <input type="text" id="lastName" name="Last Name" class="form-control" required placeholder="Doe">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">Email Address *</label>
+                                <input type="email" id="email" name="Email" class="form-control" required placeholder="name@domain.com">
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" name="Phone" class="form-control" placeholder="(555) 000-0000">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="inquiryType">Nature of Inquiry *</label>
+                            <select id="inquiryType" name="Inquiry Type" class="form-control" required>
+                                <option value="" disabled selected>Select an option...</option>
+                                <option value="Federal Prime Contracting Masterclass">Federal Prime Contracting Masterclass</option>
+                                <option value="R&D / Non-Dilutive Funding Review">R&D / Non-Dilutive Funding Review</option>
+                                <option value="Talent Pipeline / Sub-Contracting">Talent Pipeline / Sub-Contracting</option>
+                                <option value="Press / Media Inquiry">Press / Media Inquiry</option>
+                                <option value="General Question">General Question</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Mission Brief / Message *</label>
+                            <textarea id="message" name="Message" class="form-control" required placeholder="Please provide details regarding your inquiry..."></textarea>
+                        </div>
+
+                        <!-- Formspree Anti-Spam Hidden Input -->
+                        <input type="text" name="_gotcha" style="display:none" />
+
+                        <button type="submit" class="btn btn-primary btn-block" style="font-size: 1.1rem; padding: 16px;">Transmit Message Securely</button>
+
+                        <div class="form-disclaimer">
+                            <strong><i class="fas fa-exclamation-triangle"></i> Security Notice:</strong> Do NOT submit classified information, CUI, ITAR-controlled technical data, or export-controlled proprietary secrets through this web form. By submitting, you agree to our <a href="legal.html" style="color: #991B1B; text-decoration: underline;">Privacy Policy</a>.
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">
+                        <img src="https://unwellbutrin.art/SITE%20MEDIA/PNKPLLD.png" alt="PINK PILLED Logo" class="logo-img" onerror="this.src='https://placehold.co/80x80/ff66b3/ffffff?text=PP'">
+                        <span>PINK PILLED<span class="dot">™</span></span>
+                    </a>
+                    <p>Non-Traditional Federal Prime Contracting. Built for the mission, designed for success.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Capabilities</h4>
+                    <ul>
+                        <li><a href="services.html">Talent Acquisition</a></li>
+                        <li><a href="services.html">Rapid R&D</a></li>
+                        <li><a href="services.html">Project Management</a></li>
+                        <li><a href="contractor.html">Training Modules</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Organization</h4>
+                    <ul>
+                        <li><a href="about.html">Mission & Story</a></li>
+                        <li><a href="compliance.html">Compliance</a></li>
+                        <li><a href="legal.html">Legal Statement</a></li>
+                        <li><a href="faq.html">FAQ & Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 PINK PILLED™. All rights reserved.</p>
+                <div style="display: flex; gap: 20px;">
+                    <span>CAGE Code: 180J1</span>
+                    <span>UEI: SJP5WQE3EDG7</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Intersection Observer for fade-in animations
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => { 
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+            // FAQ Accordion Logic
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                
+                question.addEventListener('click', () => {
+                    // Close other open items
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item && otherItem.classList.contains('active')) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+                    
+                    // Toggle current item
+                    item.classList.toggle('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
