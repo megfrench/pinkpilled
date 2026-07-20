@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Full Disclosure and Non-Disclosure Agreement (NDA) for PINK PILLED products and training modules.">
+    <title>Disclosure & NDA | PINK PILLED</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://unwellbutrin.art/SITE%20MEDIA/PNKPLLD.png">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-color: #ff66b3;
+            --primary-dark: #ff4da6;
+            --primary-light: #ffcce5;
+            --secondary-color: #10B981;
+            --navy-dark: #0a192f;
+            --text-color: #1F2937;
+            --text-muted: #6B7280;
+            --bg-white: #FFFFFF;
+            --bg-light: #F9FAFB;
+            --border-color: #E5E7EB;
+            --font-main: 'Inter', sans-serif;
+            --transition: all 0.3s ease;
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--font-main); color: var(--text-color); line-height: 1.6; background-color: var(--bg-light); -webkit-font-smoothing: antialiased; }
+        a { text-decoration: none; color: inherit; transition: var(--transition); }
+        ul { list-style: none; }
+        
+        .container { width: 90%; max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+        .section-padding { padding: 80px 0 120px; }
+
+        /* Navbar */
+        .navbar { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; background-color: white; padding: 8px 0; border-bottom: 1px solid var(--border-color); box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; }
+        .logo { font-size: 1.4rem; font-weight: 800; color: var(--primary-color); display: flex; align-items: center; gap: 15px; }
+        .logo-img { height: 80px; width: auto; object-fit: contain; }
+        .logo .dot { color: var(--primary-color); }
+        .nav-links { display: flex; align-items: center; gap: 30px; }
+        .nav-links a { font-weight: 500; color: var(--text-color); font-size: 0.95rem; }
+        .nav-links a:hover { color: var(--primary-color); }
+
+        /* Page Header */
+        .page-header {
+            padding: 180px 0 60px;
+            background: #111827;
+            color: white;
+            text-align: center;
+            border-bottom: 4px solid var(--primary-color);
+        }
+        .page-title { font-size: 3rem; margin-bottom: 15px; font-weight: 800; }
+        .page-subtitle { font-size: 1.1rem; color: #9CA3AF; max-width: 700px; margin: 0 auto; }
+        .last-updated { margin-top: 20px; font-size: 0.9rem; color: var(--primary-color); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* Legal Content */
+        .legal-wrapper {
+            background: white;
+            padding: 60px;
+            border-radius: 16px;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border-color);
+            margin-top: -30px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .alert-box-critical {
+            background: #FEF2F2;
+            border: 2px solid #EF4444;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            box-shadow: 0 4px 6px rgba(239, 68, 68, 0.1);
+        }
+        .alert-box-critical i { color: #EF4444; font-size: 2rem; margin-top: 2px; }
+        .alert-box-critical h3 { color: #991B1B; margin-bottom: 8px; font-size: 1.3rem; }
+        .alert-box-critical p { color: #7F1D1D; margin: 0; font-size: 1rem; font-weight: 500; line-height: 1.5; }
+
+        .legal-section {
+            margin-bottom: 40px;
+        }
+        
+        .legal-section h2 {
+            color: var(--navy-dark);
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .legal-section h2::before {
+            content: '';
+            display: block;
+            width: 8px;
+            height: 24px;
+            background-color: var(--primary-color);
+            border-radius: 4px;
+        }
+        
+        .legal-section p { color: #4B5563; margin-bottom: 15px; font-size: 1.05rem; }
+        .legal-section ul { margin-left: 20px; margin-bottom: 15px; list-style-type: disc; color: #4B5563; }
+        .legal-section ul li { margin-bottom: 10px; padding-left: 5px; }
+
+        /* Buttons */
+        .btn { display: inline-block; padding: 14px 32px; border-radius: 8px; font-weight: 600; cursor: pointer; transition: var(--transition); border: 2px solid transparent; text-align: center; }
+        .btn-primary { background-color: var(--primary-color); color: white; }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(255, 102, 179, 0.3); }
+        .btn-sm { padding: 10px 24px; font-size: 0.9rem; }
+
+        /* Footer */
+        .footer { padding-top: 80px; border-top: 1px solid var(--border-color); background: white; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; padding-bottom: 60px; max-width: 1200px; margin: 0 auto; padding-left: 15px; padding-right: 15px; }
+        .footer-brand p { color: var(--text-muted); margin-top: 15px; font-size: 0.95rem; }
+        .footer-links h4 { font-size: 1.1rem; margin-bottom: 20px; }
+        .footer-links ul li { margin-bottom: 12px; }
+        .footer-links ul li a { color: var(--text-muted); font-size: 0.9rem; }
+        .footer-links ul li a:hover { color: var(--primary-color); }
+        .footer-bottom { border-top: 1px solid var(--border-color); padding: 30px 15px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; font-size: 0.9rem; color: var(--text-muted); max-width: 1200px; margin: 0 auto; }
+
+        @media (max-width: 768px) {
+            .legal-wrapper { padding: 30px 20px; }
+            .page-title { font-size: 2.2rem; }
+            .legal-section h2 { font-size: 1.3rem; }
+            .alert-box-critical { flex-direction: column; align-items: center; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container container" style="width: 90%; max-width: 1200px;">
+            <a href="index.html" class="logo">
+                <img src="https://unwellbutrin.art/SITE%20MEDIA/PNKPLLD.png" alt="PINK PILLED Logo" class="logo-img" onerror="this.src='https://placehold.co/80x80/ff66b3/ffffff?text=PP'">
+                <span>PINK PILLED<span class="dot">.</span></span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="research.html">Research & Development</a></li>
+                <li><a href="contractor.html" class="btn btn-primary btn-sm" style="color: white;">Become a Contractor</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <div class="container">
+            <h1 class="page-title">Full Disclosure & NDA</h1>
+            <p class="page-subtitle">Binding Confidentiality Agreement and Operational Disclosures for PINK PILLED Digital Products and Masterclass Access.</p>
+            <div class="last-updated"><i class="far fa-calendar-alt" style="margin-right: 5px;"></i> Effective Date: July 2026</div>
+        </div>
+    </header>
+
+    <section class="section-padding">
+        <div class="container">
+            <div class="legal-wrapper">
+                
+                <div class="alert-box-critical">
+                    <i class="fas fa-lock"></i>
+                    <div>
+                        <h3>AUTOMATIC EXECUTION UPON PURCHASE</h3>
+                        <p>By completing a purchase of the PINK PILLED Federal Prime Contracting Masterclass, CEO Shadowing Program, or any related digital product, you (the "Purchaser" or "Receiving Party") are automatically entering into a legally binding Mutual Non-Disclosure and Confidentiality Agreement (NDA) with PINK PILLED (the "Disclosing Party"). Do not proceed with checkout if you do not agree to these terms.</p>
+                    </div>
+                </div>
+
+                <!-- SECTION 1 -->
+                <div class="legal-section">
+                    <h2>1. Purpose of Agreement</h2>
+                    <p>PINK PILLED provides highly specialized, proprietary operational blueprints, technical proposal templates, pricing strategies, and internal curriculum designed to secure federal contracts. The purpose of this Agreement is to prevent the unauthorized disclosure, distribution, resale, or pirating of this intellectual property by those who are granted access via purchase.</p>
+                </div>
+
+                <!-- SECTION 2 -->
+                <div class="legal-section">
+                    <h2>2. Definition of Confidential Information</h2>
+                    <p>"Confidential Information" shall mean any and all information or material that has or could have commercial value or other utility in the business in which PINK PILLED is engaged. This explicitly includes, but is not limited to:</p>
+                    <ul>
+                        <li>All video modules, text, and operational data within the Master Curriculum.</li>
+                        <li>Proprietary Proposal Templates, Section L & M Compliance Matrices, and Cost-Volume architectures.</li>
+                        <li>Internal targeting strategies, DARPA/SBIR acquisition methodologies, and teaming agreement frameworks.</li>
+                        <li>Any communications (Slack, email, or live calls) containing mentorship advice or Sub-Contractor pipeline evaluation criteria during the Shadowing Program.</li>
+                    </ul>
+                </div>
+
+                <!-- SECTION 3 -->
+                <div class="legal-section">
+                    <h2>3. Obligations of Receiving Party</h2>
+                    <p>The Purchaser acknowledges that the Confidential Information constitutes highly valuable trade secrets of PINK PILLED. The Purchaser explicitly agrees to the following:</p>
+                    <ul>
+                        <li><strong>No Redistribution:</strong> You shall not copy, screen-record, download (where prohibited), duplicate, share, or otherwise distribute the Confidential Information to any third party, including friends, business partners, or employees who have not purchased their own access.</li>
+                        <li><strong>No Resale:</strong> You are strictly prohibited from reselling, repackaging, or re-branding our templates, curriculum, or methodologies as your own courses or consulting products.</li>
+                        <li><strong>Single-User License:</strong> Your login credentials are for your individual use only. System monitoring logs concurrent IP logins, and sharing account access will trigger an immediate, non-refundable termination of your account.</li>
+                        <li><strong>Standard of Care:</strong> You must protect the Confidential Information with the same degree of care you use to protect your own proprietary information, but in no event less than a reasonable degree of care.</li>
+                    </ul>
+                </div>
+
+                <!-- SECTION 4 -->
+                <div class="legal-section">
+                    <h2>4. Exclusions from Confidential Information</h2>
+                    <p>Receiving Party's obligations under this Agreement do not extend to information that is: (a) publicly known at the time of disclosure or subsequently becomes publicly known through no fault of the Receiving Party; (b) discovered or created by the Receiving Party before disclosure by Disclosing Party; or (c) learned by the Receiving Party through legitimate means other than from the Disclosing Party or Disclosing Party's representatives.</p>
+                    <p><em>(Note: Publicly available federal links, such as SAM.gov URLs or FAR clauses referenced within the course, are not confidential. The specific curation, commentary, templates, and methodologies wrapped around them are.)</em></p>
+                </div>
+
+                <!-- SECTION 5 -->
+                <div class="legal-section">
+                    <h2>5. Term and Duration</h2>
+                    <p>The non-disclosure provisions of this Agreement shall survive the termination of the Purchaser's access to the course and the Purchaser's duty to hold Confidential Information in confidence shall remain in effect indefinitely until the Confidential Information no longer qualifies as a trade secret or until Disclosing Party sends Receiving Party written notice releasing Receiving Party from this Agreement, whichever occurs first.</p>
+                </div>
+
+                <!-- SECTION 6 (UPDATED WITH AI CRAWLER WARNING) -->
+                <div class="legal-section" style="background: var(--bg-light); padding: 25px; border-radius: 8px; border-left: 4px solid var(--primary-color);">
+                    <h2 style="margin-bottom: 10px;">6. Copyright Ownership & DMCA Enforcement</h2>
+                    <p>All content, templates, curriculum videos, and proprietary strategies provided by PINK PILLED are the exclusive intellectual property of PINK PILLED and are protected by United States and international copyright laws. <strong>In the event of unauthorized public disclosure, screen-sharing, torrenting, or pirating of our materials on any public or private platform (including but not limited to YouTube, Reddit, Discord, Telegram, or third-party course aggregators), PINK PILLED will aggressively exercise its rights under the Digital Millennium Copyright Act (DMCA) to execute immediate legal takedown notices.</strong> This action will be taken concurrently with pursuing aggressive civil litigation for breach of this Non-Disclosure Agreement and theft of intellectual property.</p>
+                    
+                    <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(0,0,0,0.1);">
+                        <p style="color: #991B1B; font-weight: 700; margin-bottom: 5px;"><i class="fas fa-robot" style="margin-right: 8px;"></i> Automated AI Threat Detection:</p>
+                        <p style="margin-bottom: 0; font-size: 0.95rem;">Be advised that PINK PILLED deploys advanced AI web crawlers and automated threat-detection bots that continuously monitor all social media platforms, forums, and peer-to-peer networks. These systems are designed to immediately identify non-compliant disclosures, unauthorized distribution, or pirating of our proprietary materials, automatically triggering DMCA takedowns and initiating legal action.</p>
+                    </div>
+                </div>
+
+                <!-- SECTION 7 -->
+                <div class="legal-section">
+                    <h2>7. Remedies & Injunctive Relief</h2>
+                    <p>The Purchaser acknowledges that a breach of this Agreement will cause irreparable damage to PINK PILLED, for which monetary damages alone may not be an adequate remedy. Therefore, in the event of a breach or threatened breach, PINK PILLED shall be entitled to seek equitable relief, including an injunction, without the necessity of posting a bond, in addition to any other legal remedies available (including actual and punitive damages).</p>
+                </div>
+
+                <!-- SECTION 8 -->
+                <div class="legal-section">
+                    <h2>8. Earnings & Success Disclosure Recap</h2>
+                    <p>As detailed in our <a href="compliance.html" style="color: var(--primary-color); text-decoration: underline;">Compliance Center</a>, purchasing this curriculum and receiving this Confidential Information does not guarantee the award of any federal contract. The Purchaser assumes all risk associated with their business operations and proposal submissions.</p>
+                </div>
+
+                <!-- SECTION 9 -->
+                <div class="legal-section">
+                    <h2>9. Governing Law & Jurisdiction</h2>
+                    <p>This Agreement and any dispute arising under it shall be governed by and construed in accordance with the laws of the State of Ohio, United States. Any legal action to enforce this Agreement shall be brought exclusively in the state or federal courts located in or near Ross County, Ohio.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid" style="padding-left: 0; padding-right: 0;">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">
+                        <img src="https://unwellbutrin.art/SITE%20MEDIA/PNKPLLD.png" alt="PINK PILLED Logo" class="logo-img" onerror="this.src='https://placehold.co/80x80/ff66b3/ffffff?text=PP'">
+                        <span>PINK PILLED<span class="dot">.</span></span>
+                    </a>
+                    <p>Non-Traditional Federal Prime Contracting. Built for the mission, designed for success.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Capabilities</h4>
+                    <ul>
+                        <li><a href="services.html">Talent Acquisition</a></li>
+                        <li><a href="services.html">Rapid R&D</a></li>
+                        <li><a href="services.html">Project Management</a></li>
+                        <li><a href="contractor.html">Training Modules</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Organization</h4>
+                    <ul>
+                        <li><a href="about.html">Mission & Story</a></li>
+                        <li><a href="compliance.html">Compliance</a></li>
+                        <li><a href="legal.html">Legal Statement</a></li>
+                        <li><a href="disclosure.html">Disclosure & NDA</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom" style="padding-left: 0; padding-right: 0;">
+                <p>&copy; 2026 PINK PILLED. All rights reserved.</p>
+                <div style="display: flex; gap: 20px;">
+                    <span>CAGE Code: 180J1</span>
+                    <span>UEI: SJP5WQE3EDG7</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
