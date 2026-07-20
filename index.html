@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="PINK PILLED™ - Non-Traditional Federal Prime Contracting & Strategic Defense Solutions.">
-    <title>PINK PILLED™ | Federal Prime Contracting | Research & Development </title>
+    <title>PINK PILLED™ | Federal Prime Contracting</title>
     
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="PINKPILLED_Logo.png">
@@ -383,17 +383,6 @@
             opacity: 0;
             transition: opacity 0.5s ease, filter 0.8s ease;
         }
-        
-        /* Inline GIF Animation for Hero Sub-heading */
-        .typing-icon-gif {
-            height: 24px;
-            width: auto;
-            opacity: 0;
-            transition: opacity 0.5s ease;
-            vertical-align: middle;
-            margin-left: 8px;
-            filter: drop-shadow(0 0 8px rgba(255, 102, 179, 0.6));
-        }
 
         .pink-glow-text { text-shadow: 0 0 15px rgba(255, 102, 179, 0.8); }
         .pink-glow-icon { filter: drop-shadow(0 0 15px rgba(255, 102, 179, 0.8)); }
@@ -612,14 +601,14 @@
     <nav class="navbar">
         <div class="container nav-container">
             <a href="#" class="logo">
-                <img src="PINKPILLED_Logo.png" alt="PINKPILLED_Logo.png" class="logo-img" onerror="this.src='https://placehold.co/80x80/ff66b3/ffffff?text=PP'">
+                <img src="PINKPILLED_Logo.png" alt="PINK PILLED Logo" class="logo-img" onerror="this.src='https://placehold.co/80x80/ff66b3/ffffff?text=PP'">
                 <span>PINK PILLED<span class="dot">™</span></span>
             </a>
             <ul class="nav-links">
                 <li><a href="about.html">About</a></li>
-                <li><a href="services.html">Services</a></li>
+                <li><a href="capabilities.html">Services</a></li>
                 <li><a href="research.html">Research & Development</a></li>
-                <li><a href="contact.html" class="btn btn-primary btn-sm">Become a Contractor</a></li>
+                <li><a href="faq_contact.html" class="btn btn-primary btn-sm">Become a Contractor</a></li>
             </ul>
         </div>
     </nav>
@@ -630,10 +619,9 @@
             <div class="hero-content">
                 <h1 class="hero-title chromatic-text">Non-Traditional Federal Prime Contracting</h1>
                 
-                <!-- Pink Glowing Typewriter Text with Animated GIF Icon -->
+                <!-- Pink Glowing Typewriter Text without Animated GIF Icon -->
                 <div class="typing-header-wrapper" data-typing-trigger style="justify-content: flex-start; margin-top: -15px; margin-bottom: 25px; gap: 8px;">
                     <p class="typing-heading" id="hero-sub-heading" style="font-size: 1.05rem; font-weight: 600; text-transform: none;"></p>
-                    <img id="hero-sub-gif" class="typing-icon-gif" src="hero.gif" alt="Pill GIF" onerror="this.style.display='none'">
                 </div>
 
                 <p class="hero-subtitle">Accelerating defense acquisition through agile methodologies and cutting-edge tech. We bridge the gap between commercial innovation, disadvantaged populations, and mission-critical requirements.</p>
@@ -681,6 +669,20 @@
                     <div class="icon-box"><i class="fas fa-dna"></i></div>
                     <h3>Bioinformatics</h3>
                     <p>Fusing computational biology, data analytics, and life sciences to deliver rapid, mission-critical insights for biological threat assessment and human performance.</p>
+                    <a href="#contact" class="btn btn-primary btn-sm">Learn More</a>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <div class="icon-box"><i class="fas fa-brain"></i></div>
+                    <h3>Cognitive Security & Info Ops</h3>
+                    <p>Analyzing how information transmits and mutates. We leverage data science and behavioral models to identify cognitive vulnerabilities and map narrative warfare.</p>
+                    <a href="#contact" class="btn btn-primary btn-sm">Learn More</a>
+                </div>
+
+                <div class="feature-card fade-in">
+                    <div class="icon-box"><i class="fas fa-layer-group"></i></div>
+                    <h3>Strategic Tech Stewardship</h3>
+                    <p>Bridging the gap between theoretical academia and tactical deployment. We act as the translation layer to convert complex scientific research into actionable defense capabilities.</p>
                     <a href="#contact" class="btn btn-primary btn-sm">Learn More</a>
                 </div>
             </div>
@@ -1013,9 +1015,7 @@ We focus on scouting and recruiting talent from historically adversely affected 
                         // Special handling for hero GIF icon
                         if (targetHeading.id === 'hero-sub-heading') {
                             const config = typingSections[0];
-                            const gifIcon = document.getElementById('hero-sub-gif');
                             typeWriter(targetHeading, config.text, 0, () => {
-                                if(gifIcon) gifIcon.style.opacity = '1';
                             });
                             return;
                         }
