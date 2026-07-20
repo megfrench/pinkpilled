@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="About PINK PILLED™ - Learn about our mission to revolutionize non-traditional federal prime contracting.">
+    <title>About Us | PINK PILLED™</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://unwellbutrin.art/SITE%20MEDIA/PNKPLLD.png">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-color: #ff66b3;
+            --primary-dark: #ff4da6;
+            --primary-light: #ffcce5;
+            --secondary-color: #10B981;
+            --navy-dark: #0a192f;
+            --text-color: #1F2937;
+            --text-muted: #6B7280;
+            --bg-white: #FFFFFF;
+            --bg-light: #F9FAFB;
+            --border-color: #E5E7EB;
+            --font-main: 'Inter', sans-serif;
+            --transition: all 0.3s ease;
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--font-main); color: var(--text-color); line-height: 1.6; background-color: var(--bg-white); -webkit-font-smoothing: antialiased; }
+        a { text-decoration: none; color: inherit; transition: var(--transition); }
+        ul { list-style: none; }
+        
+        .container { width: 90%; max-width: 1200px; margin: 0 auto; padding: 0 15px; }
+        .section-padding { padding: 100px 0; }
+        .bg-light { background-color: var(--bg-light); }
+        .text-center { text-align: center; }
+
+        /* Navbar */
+        .navbar { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; background-color: white; padding: 8px 0; border-bottom: 1px solid var(--border-color); box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.4rem; font-weight: 800; color: var(--primary-color); display: flex; align-items: center; gap: 15px; }
+        .logo-img { height: 80px; width: auto; object-fit: contain; }
+        .logo .dot { color: var(--primary-color); }
+        .nav-links { display: flex; align-items: center; gap: 30px; }
+        .nav-links a { font-weight: 500; color: var(--text-color); font-size: 0.95rem; }
+        .nav-links a:hover, .nav-links a.active { color: var(--primary-color); }
+
+        /* Buttons */
+        .btn { display: inline-block; padding: 14px 32px; border-radius: 8px; font-weight: 600; cursor: pointer; transition: var(--transition); border: 2px solid transparent; text-align: center; }
+        .btn-primary { background-color: var(--primary-color); color: white; }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(255, 102, 179, 0.3); }
+        .btn-sm { padding: 10px 24px; font-size: 0.9rem; }
+
+        /* Page Header */
+        .page-header {
+            padding: 180px 0 100px;
+            background: radial-gradient(circle at top right, var(--primary-light), transparent 40%), radial-gradient(circle at bottom left, #ecfdf5, transparent 40%);
+            text-align: center;
+        }
+        .page-title {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(180deg, var(--navy-dark) 0%, #1b2c45 25%, var(--primary-color) 46%, #ffffff 50%, var(--primary-color) 54%, #1b2c45 75%, var(--navy-dark) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 800;
+        }
+        .page-subtitle { font-size: 1.25rem; color: var(--text-muted); max-width: 700px; margin: 0 auto; }
+
+        /* Mission & Story */
+        .content-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+        .story-text h2 { color: var(--primary-color); font-size: 2.5rem; margin-bottom: 25px; }
+        .story-text p { margin-bottom: 20px; font-size: 1.1rem; color: #4B5563; }
+        .story-image img { width: 100%; border-radius: 20px; box-shadow: var(--shadow-lg); border: 1px solid var(--border-color); }
+
+        /* Core Values */
+        .values-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-top: 50px; }
+        .value-card { background: white; padding: 40px; border-radius: 16px; border: 1px solid var(--border-color); text-align: center; transition: var(--transition); }
+        .value-card:hover { transform: translateY(-5px); border-color: var(--primary-color); box-shadow: 0 10px 25px rgba(255, 102, 179, 0.15); }
+        .value-icon { font-size: 2.5rem; color: var(--primary-color); margin-bottom: 20px; }
+        .value-card h3 { margin-bottom: 15px; font-size: 1.4rem; }
+
+        /* Leadership Profile */
+        .leadership-section { background: var(--navy-dark); color: white; }
+        .leader-profile { display: flex; flex-wrap: wrap; gap: 50px; align-items: center; background: rgba(255,255,255,0.05); padding: 50px; border-radius: 24px; border: 1px solid rgba(255,255,255,0.1); }
+        .leader-img { flex: 1; min-width: 250px; }
+        .leader-img img { width: 100%; border-radius: 50%; border: 4px solid var(--primary-color); box-shadow: 0 0 30px rgba(255, 102, 179, 0.3); }
+        .leader-info { flex: 2; min-width: 300px; }
+        .leader-info h3 { font-size: 2.5rem; margin-bottom: 5px; color: white; }
+        .leader-info h4 { color: var(--primary-color); font-size: 1.2rem; margin-bottom: 25px; font-weight: 500; }
+        .leader-info p { color: #D1D5DB; margin-bottom: 15px; font-size: 1.05rem; }
+
+        /* Footer */
+        .footer { padding-top: 80px; border-top: 1px solid var(--border-color); background: white; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; padding-bottom: 60px; }
+        .footer-brand p { color: var(--text-muted); margin-top: 15px; font-size: 0.95rem; }
+        .footer-links h4 { font-size: 1.1rem; margin-bottom: 20px; }
+        .footer-links ul li { margin-bottom: 12px; }
+        .footer-links ul li a { color: var(--text-muted); font-size: 0.9rem; }
+        .footer-links ul li a:hover { color: var(--primary-color); }
+        .footer-bottom { border-top: 1px solid var(--border-color); padding: 30px 0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; font-size: 0.9rem; color: var(--text-muted); }
+
+        @media (max-width: 768px) {
+            .content-grid { grid-template-columns: 1fr; }
+            .leader-profile { padding: 30px; text-align: center; }
+            .leader-img img { max-width: 250px; margin: 0 auto; }
+        }
+        
+        .fade-in { opacity: 0; transform: translateY(20px); transition: 0.6s ease-out; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <img src="https://unwellbutrin.art/SITE%20MEDIA/PNKPLLD.png" alt="PINK PILLED Logo" class="logo-img" onerror="this.src='https://placehold.co/80x80/ff66b3/ffffff?text=PP'">
+                <span>PINK PILLED<span class="dot">™</span></span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="about.html" class="active">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="research.html">Research & Development</a></li>
+                <li><a href="index.html#contact" class="btn btn-primary btn-sm" style="color: white;">Become a Contractor</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <div class="container">
+            <h1 class="page-title fade-in">Eliminating Boundaries.</h1>
+            <p class="page-subtitle fade-in">We are on a mission to ensure that financial freedom, scientific discovery, and national security are never held back by systemic barriers.</p>
+        </div>
+    </header>
+
+    <section class="section-padding">
+        <div class="container">
+            <div class="content-grid">
+                <div class="story-text fade-in">
+                    <h2>Our Genesis</h2>
+                    <p>Founded in 2025, PINK PILLED™ was born out of a critical observation: the federal acquisition lifecycle is fundamentally flawed, often gatekeeping the brightest minds due to technical debt, bureaucratic red tape, and systemic exclusion.</p>
+                    <p>We realized that to truly accelerate defense acquisition and R&D, we couldn't just play by the old rules. We needed to build a bridge between commercial innovation, historically disadvantaged populations, and mission-critical government requirements.</p>
+                    <p>Our team consists of independent researchers, elite developers, and relentless problem solvers who are obsessed with cleaner integration and uncompromised mission success. We actively scout talent from marginalized groups to level the playing field and inject fresh, non-traditional perspectives into federal ecosystems.</p>
+                </div>
+                <div class="story-image fade-in">
+                    <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&q=80&w=800" alt="Diverse tech team collaborating" onerror="this.src='https://placehold.co/800x600/f9fafb/ff66b3?text=Our+Team'">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding bg-light">
+        <div class="container">
+            <div class="text-center" style="margin-bottom: 50px;">
+                <h2 style="font-size: 2.5rem; color: var(--navy-dark);">Our Core Principles</h2>
+                <p class="section-subtitle">The foundation of everything we do.</p>
+            </div>
+            <div class="values-grid">
+                <div class="value-card fade-in">
+                    <i class="fas fa-unlock-alt value-icon"></i>
+                    <h3>Radical Access</h3>
+                    <p>We demystify the System for Award Management (SAM) and federal contracting to create financial autonomy for women, LGBTQIA+, and minority populations.</p>
+                </div>
+                <div class="value-card fade-in">
+                    <i class="fas fa-bolt value-icon"></i>
+                    <h3>Agile Execution</h3>
+                    <p>Eliminating the 'Valley of Death' through rapid prototyping and leveraging Other Transaction Authorities (OTAs) to move at the speed of relevance.</p>
+                </div>
+                <div class="value-card fade-in">
+                    <i class="fas fa-shield-virus value-icon"></i>
+                    <h3>Strategic Resilience</h3>
+                    <p>Preventing technological surprise while maintaining operational superiority through cutting-edge bioinformatics and talent curation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="leadership-section section-padding">
+        <div class="container">
+            <div class="text-center" style="margin-bottom: 50px;">
+                <h2 style="font-size: 2.5rem; color: var(--primary-light);">Leadership</h2>
+            </div>
+            <div class="leader-profile fade-in">
+                <div class="leader-img">
+                    <img src="https://unwellbutrin.art/SITE%20MEDIA/1766435971118.jpg" alt="Megan French - CEO" onerror="this.src='https://placehold.co/500x500/ff66b3/ffffff?text=MF'">
+                </div>
+                <div class="leader-info">
+                    <h3>Megan French</h3>
+                    <h4>Founder & CEO</h4>
+                    <p>Megan French recognized the massive disconnect between brilliant, non-traditional STEM talent and the restrictive pathways of federal contracting. With a deep background in strategic logistics and technological integration, she founded PINK PILLED™ to bridge this gap.</p>
+                    <p>Known for her visionary approach to research management and technical tools, Megan leads the charge in demystifying government systems, advocating for diversity in tech, and accelerating high-stakes R&D initiatives.</p>
+                    <div style="margin-top: 20px; display: flex; gap: 15px;">
+                        <a href="https://www.linkedin.com/in/mflogistics/" target="_blank" style="color: var(--primary-color); font-size: 1.5rem;"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://github.com/megfrench" target="_blank" style="color: var(--primary-color); font-size: 1.5rem;"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">
+                        <img src="https://unwellbutrin.art/SITE%20MEDIA/PNKPLLD.png" alt="PINK PILLED Logo" class="logo-img" onerror="this.src='https://placehold.co/80x80/ff66b3/ffffff?text=PP'">
+                        <span>PINK PILLED<span class="dot">™</span></span>
+                    </a>
+                    <p>Non-Traditional Federal Prime Contracting. Built for the mission, designed for success.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Capabilities</h4>
+                    <ul>
+                        <li><a href="services.html">Talent Acquisition</a></li>
+                        <li><a href="services.html">Rapid R&D</a></li>
+                        <li><a href="services.html">Project Management</a></li>
+                        <li><a href="index.html#pricing">Training Modules</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Organization</h4>
+                    <ul>
+                        <li><a href="about.html">Mission & Story</a></li>
+                        <li><a href="#">Compliance</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Legal Statement</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 PINK PILLED™. All rights reserved.</p>
+                <div style="display: flex; gap: 20px;">
+                    <span>CAGE Code: 180J1</span>
+                    <span>UEI: SJP5WQE3EDG7</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => { 
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.15 });
+            
+            document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+        });
+    </script>
+</body>
+</html>
