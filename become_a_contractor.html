@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Become a Federal Prime Contractor with PINK PILLED™. Step-by-step CEO training, master curriculum, and shadowing program.">
+    <title>Become a Contractor | PINK PILLED™</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://unwellbutrin.art/SITE%20MEDIA/PNKPLLD.png">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-color: #ff66b3;
+            --primary-dark: #ff4da6;
+            --primary-light: #ffcce5;
+            --secondary-color: #10B981;
+            --navy-dark: #0a192f;
+            --text-color: #1F2937;
+            --text-muted: #6B7280;
+            --bg-white: #FFFFFF;
+            --bg-light: #F9FAFB;
+            --border-color: #E5E7EB;
+            --font-main: 'Inter', sans-serif;
+            --transition: all 0.3s ease;
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--font-main); color: var(--text-color); line-height: 1.6; background-color: var(--bg-white); -webkit-font-smoothing: antialiased; }
+        a { text-decoration: none; color: inherit; transition: var(--transition); }
+        ul { list-style: none; }
+        
+        .container { width: 90%; max-width: 1200px; margin: 0 auto; padding: 0 15px; }
+        .section-padding { padding: 100px 0; }
+        .bg-light { background-color: var(--bg-light); }
+        .bg-dark { background-color: var(--navy-dark); color: white; }
+        .text-center { text-align: center; }
+
+        /* Navbar */
+        .navbar { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; background-color: white; padding: 8px 0; border-bottom: 1px solid var(--border-color); box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.4rem; font-weight: 800; color: var(--primary-color); display: flex; align-items: center; gap: 15px; }
+        .logo-img { height: 80px; width: auto; object-fit: contain; }
+        .logo .dot { color: var(--primary-color); }
+        .nav-links { display: flex; align-items: center; gap: 30px; }
+        .nav-links a { font-weight: 500; color: var(--text-color); font-size: 0.95rem; }
+        .nav-links a:hover { color: var(--primary-color); }
+        
+        /* Buttons */
+        .btn { display: inline-block; padding: 14px 32px; border-radius: 8px; font-weight: 600; cursor: pointer; transition: var(--transition); border: 2px solid transparent; text-align: center; }
+        .btn-primary { background-color: var(--primary-color); color: white; }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(255, 102, 179, 0.3); }
+        .btn-secondary { background-color: white; color: var(--text-color); border: 1px solid var(--border-color); }
+        .btn-secondary:hover { background-color: var(--bg-light); border-color: var(--text-muted); }
+        .btn-sm { padding: 10px 24px; font-size: 0.9rem; }
+        .btn-outline { border: 2px solid var(--primary-color); color: var(--primary-color); background: transparent; }
+        .btn-outline:hover { background: var(--primary-color); color: white; }
+        
+        /* Active button state for this page */
+        .btn-active-nav { background-color: var(--primary-dark); box-shadow: inset 0 3px 6px rgba(0,0,0,0.1); pointer-events: none; }
+
+        /* Hero Section */
+        .page-header {
+            padding: 200px 0 100px;
+            background: radial-gradient(circle at top right, var(--primary-light), transparent 40%),
+                        radial-gradient(circle at bottom left, #ecfdf5, transparent 40%);
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .chromatic-text { 
+            background: linear-gradient(180deg, var(--navy-dark) 0%, #1b2c45 25%, var(--primary-color) 46%, #ffffff 50%, var(--primary-color) 54%, #1b2c45 75%, var(--navy-dark) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: var(--navy-dark); 
+            font-weight: 800;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+        }
+
+        .hero-title { font-size: 3.8rem; line-height: 1.1; margin-bottom: 1.5rem; }
+        .hero-subtitle { font-size: 1.25rem; color: var(--text-muted); margin-bottom: 2.5rem; max-width: 800px; margin-left: auto; margin-right: auto; }
+
+        /* Curriculum Timeline */
+        .roadmap-container { max-width: 900px; margin: 0 auto; position: relative; padding: 40px 0; }
+        .roadmap-container::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 50px; height: 100%; width: 4px;
+            background: linear-gradient(to bottom, var(--primary-light), var(--primary-color), var(--navy-dark));
+            border-radius: 2px;
+        }
+        
+        .module-step { display: flex; margin-bottom: 60px; position: relative; opacity: 0; transform: translateY(30px); transition: 0.8s ease; }
+        .module-step.visible { opacity: 1; transform: translateY(0); }
+        
+        .module-icon {
+            width: 80px; height: 80px; flex-shrink: 0;
+            background: white; border: 4px solid var(--primary-color);
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-size: 2rem; color: var(--primary-color);
+            position: relative; z-index: 2; margin-left: 12px;
+            box-shadow: 0 0 20px rgba(255, 102, 179, 0.3);
+        }
+        
+        .module-content {
+            background: white; padding: 35px; border-radius: 16px;
+            border: 1px solid var(--border-color);
+            margin-left: 40px; flex-grow: 1;
+            box-shadow: var(--shadow-md); transition: var(--transition);
+        }
+        .module-content:hover {
+            transform: translateY(-5px); border-color: var(--primary-color);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .module-label { display: inline-block; background: var(--primary-light); color: var(--primary-dark); padding: 4px 12px; border-radius: 12px; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; margin-bottom: 15px; }
+        .module-content h3 { color: var(--navy-dark); font-size: 1.6rem; margin-bottom: 15px; }
+        .module-content p { color: var(--text-muted); margin-bottom: 15px; }
+        
+        .module-list { list-style: none; }
+        .module-list li { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 8px; color: var(--text-color); font-weight: 500; }
+        .module-list i { color: var(--secondary-color); margin-top: 5px; }
+
+        /* Shadowing Highlight */
+        .shadowing-highlight {
+            background: var(--navy-dark); color: white;
+            border-radius: 24px; padding: 60px;
+            margin-top: 40px; display: grid;
+            grid-template-columns: 1fr 1fr; gap: 50px; align-items: center;
+            position: relative; overflow: hidden;
+        }
+        .shadowing-bg-icon { position: absolute; right: -50px; bottom: -50px; font-size: 20rem; color: rgba(255,102,179,0.05); z-index: 0; }
+        .shadowing-content { position: relative; z-index: 1; }
+        .shadowing-content h2 { font-size: 2.5rem; margin-bottom: 20px; color: white; }
+        .shadowing-content h2 span { color: var(--primary-color); text-shadow: 0 0 15px rgba(255, 102, 179, 0.4); }
+        .shadowing-content p { color: #9CA3AF; font-size: 1.1rem; margin-bottom: 20px; }
+        
+        .shadowing-image img { width: 100%; border-radius: 16px; border: 2px solid rgba(255, 255, 255, 0.1); box-shadow: 0 20px 40px rgba(0,0,0,0.3); position: relative; z-index: 1; }
+
+        /* Pricing Grid (Reused from Index) */
+        .pricing-card { 
+            padding: 50px; border-radius: 24px; background: white; 
+            border: 2px solid var(--primary-color); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+            position: relative; max-width: 800px; margin: 0 auto;
+            box-shadow: 0 10px 30px rgba(255, 102, 179, 0.15);
+        }
+        .pricing-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(255, 102, 179, 0.3); }
+        .popular-tag { position: absolute; top: -16px; left: 50%; transform: translateX(-50%); background: var(--primary-color); color: white; padding: 8px 24px; border-radius: 20px; font-size: 0.9rem; font-weight: 700; white-space: nowrap; box-shadow: 0 4px 10px rgba(255, 102, 179, 0.3); }
+        .price { margin: 20px 0; display: flex; align-items: center; justify-content: center; flex-direction: column; }
+        .amount { font-size: 4rem; font-weight: 800; color: var(--primary-color); text-shadow: 0 0 20px rgba(255, 102, 179, 0.2); }
+        .period { color: var(--text-muted); font-size: 1.1rem; margin-top: 5px; }
+
+        .check-list-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 40px; text-align: left; }
+        .check-list-grid li { display: flex; gap: 12px; margin-bottom: 15px; font-weight: 500; }
+        .check-list-grid i { color: var(--secondary-color); font-size: 1.2rem; margin-top: 3px; }
+
+        /* Footer */
+        .footer { padding-top: 80px; border-top: 1px solid var(--border-color); background: white; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; padding-bottom: 60px; }
+        .footer-brand p { color: var(--text-muted); margin-top: 15px; font-size: 0.95rem; }
+        .footer-links h4 { font-size: 1.1rem; margin-bottom: 20px; }
+        .footer-links ul li { margin-bottom: 12px; }
+        .footer-links ul li a { color: var(--text-muted); font-size: 0.9rem; }
+        .footer-links ul li a:hover { color: var(--primary-color); }
+        .footer-bottom { border-top: 1px solid var(--border-color); padding: 30px 0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; font-size: 0.9rem; color: var(--text-muted); }
+
+        @media (max-width: 991px) {
+            .roadmap-container::before { left: 30px; }
+            .module-icon { width: 60px; height: 60px; font-size: 1.5rem; margin-left: 0; }
+            .module-content { margin-left: 20px; padding: 25px; }
+            .shadowing-highlight { grid-template-columns: 1fr; padding: 40px 20px; text-align: center; }
+            .check-list-grid { grid-template-columns: 1fr; }
+        }
+
+        .fade-in { opacity: 0; transform: translateY(20px); transition: 0.6s ease-out; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <img src="https://unwellbutrin.art/SITE%20MEDIA/PNKPLLD.png" alt="PINK PILLED Logo" class="logo-img" onerror="this.src='https://placehold.co/80x80/ff66b3/ffffff?text=PP'">
+                <span>PINK PILLED<span class="dot">™</span></span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="research.html">Research & Development</a></li>
+                <li><a href="contractor.html" class="btn btn-primary btn-sm btn-active-nav" style="color: white;">Become a Contractor</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <div class="container">
+            <h1 class="hero-title chromatic-text fade-in">Take Control of Your Future.</h1>
+            <h2 style="color: var(--primary-color); font-size: 2rem; margin-bottom: 20px; text-shadow: 0 0 15px rgba(255,102,179,0.3);" class="fade-in">The Prime Contracting Masterclass</h2>
+            <p class="hero-subtitle fade-in">Build a career that guarantees freedom, massive impact, and long-term stability. This is not just a course—it is a complete operational blueprint and CEO shadowing program designed for mission success.</p>
+            <div class="fade-in">
+                <a href="#enroll" class="btn btn-primary" style="padding: 16px 40px; font-size: 1.1rem;">Enroll Now</a>
+                <a href="#curriculum" class="btn btn-secondary" style="padding: 16px 40px; font-size: 1.1rem; margin-left: 15px;">View Curriculum</a>
+            </div>
+        </div>
+    </header>
+
+    <section id="curriculum" class="section-padding">
+        <div class="container">
+            <div class="text-center" style="margin-bottom: 60px;">
+                <h2 style="font-size: 2.5rem; color: var(--navy-dark);">The Step-by-Step Blueprint</h2>
+                <p style="color: var(--text-muted); max-width: 700px; margin: 10px auto 0; font-size: 1.1rem;">We guide you from having zero federal experience to legally registering your entity, building your brand, and submitting winning proposals.</p>
+            </div>
+
+            <div class="roadmap-container">
+                
+                <!-- Step 1 -->
+                <div class="module-step fade-in">
+                    <div class="module-icon"><i class="fas fa-landmark"></i></div>
+                    <div class="module-content">
+                        <span class="module-label">Phase 1</span>
+                        <h3>Executive Foundation & Registration</h3>
+                        <p>Learn how to establish your business entity securely and navigate the complex federal registration ecosystem. We demystify the bureaucracy.</p>
+                        <ul class="module-list">
+                            <li><i class="fas fa-check"></i> LLC / S-Corp Setup and Tax Basics for Contractors</li>
+                            <li><i class="fas fa-check"></i> Securing your Unique Entity ID (UEI) and CAGE Code</li>
+                            <li><i class="fas fa-check"></i> Complete, error-free SAM.gov registration walkthrough</li>
+                            <li><i class="fas fa-check"></i> Small Business Certifications (WOSB, SDVOSB, 8(a))</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="module-step fade-in">
+                    <div class="module-icon"><i class="fas fa-laptop-code"></i></div>
+                    <div class="module-content">
+                        <span class="module-label">Phase 2</span>
+                        <h3>Digital Ecosystem & Identity</h3>
+                        <p>The government buys from entities they trust. We show you how to build a highly professional, compliant digital footprint that wins awards.</p>
+                        <ul class="module-list">
+                            <li><i class="fas fa-check"></i> Identifying your unique niche and federal strengths</li>
+                            <li><i class="fas fa-check"></i> Designing a federal-ready website and digital presence</li>
+                            <li><i class="fas fa-check"></i> Crafting a compelling Capability Statement</li>
+                            <li><i class="fas fa-check"></i> Securing public endorsements and professional references</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="module-step fade-in">
+                    <div class="module-icon"><i class="fas fa-search-dollar"></i></div>
+                    <div class="module-content">
+                        <span class="module-label">Phase 3</span>
+                        <h3>The Acquisition Lifecycle</h3>
+                        <p>Master the language of the government. Learn where the money is hiding and how to strategically position yourself to win it.</p>
+                        <ul class="module-list">
+                            <li><i class="fas fa-check"></i> Finding opportunities on SAM.gov, DLA, and Agency Portals</li>
+                            <li><i class="fas fa-check"></i> Reading and decoding complex Solicitations (RFP/RFQ)</li>
+                            <li><i class="fas fa-check"></i> Responding to Sources Sought and RFI notices effectively</li>
+                            <li><i class="fas fa-check"></i> Understanding Other Transaction Authorities (OTAs)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="module-step fade-in">
+                    <div class="module-icon"><i class="fas fa-file-signature"></i></div>
+                    <div class="module-content">
+                        <span class="module-label">Phase 4</span>
+                        <h3>Proposal Architecture & Compliance</h3>
+                        <p>Writing technical proposals is an art and a science. We provide the exact templates and methodologies we use to win Prime Contracts.</p>
+                        <ul class="module-list">
+                            <li><i class="fas fa-check"></i> Technical writing strategies for federal evaluators</li>
+                            <li><i class="fas fa-check"></i> Building foolproof Compliance Matrices</li>
+                            <li><i class="fas fa-check"></i> Pricing models and cost-volume strategies</li>
+                            <li><i class="fas fa-check"></i> Red-teaming and proposal review processes</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding bg-light">
+        <div class="container">
+            <div class="shadowing-highlight fade-in">
+                <i class="fas fa-chess-knight shadowing-bg-icon"></i>
+                <div class="shadowing-content">
+                    <span style="background: rgba(255,102,179,0.2); color: var(--primary-light); padding: 6px 16px; border-radius: 20px; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; margin-bottom: 20px; display: inline-block;">Phase 5: Graduation</span>
+                    <h2>The CEO <span>Shadowing</span> Program</h2>
+                    <p>Theory only goes so far. Upon completion of the core modules, you don't just get a certificate—you get real-world mentorship.</p>
+                    <p>You will shadow real proposal breakdowns and engage in direct mentorship with PINK PILLED™ leadership. We evaluate your newly built infrastructure, review your Scope of Work (SOW), and actively assess you for potential Sub-Contracting opportunities on live PINK PILLED™ prime awards.</p>
+                    <ul class="module-list" style="margin-top: 25px;">
+                        <li style="color: white;"><i class="fas fa-check-circle" style="color: var(--primary-color);"></i> Direct CEO Mentorship</li>
+                        <li style="color: white;"><i class="fas fa-check-circle" style="color: var(--primary-color);"></i> Strategic Partnership Evaluation</li>
+                        <li style="color: white;"><i class="fas fa-check-circle" style="color: var(--primary-color);"></i> Sub-Contractor Pipeline Access</li>
+                    </ul>
+                </div>
+                <div class="shadowing-image">
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=800" alt="Mentorship and Shadowing" onerror="this.src='https://placehold.co/800x600/0a192f/ff66b3?text=Shadowing+Program'">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="enroll" class="section-padding">
+        <div class="container">
+            <div class="text-center" style="margin-bottom: 40px;">
+                <h2 style="font-size: 2.5rem; color: var(--navy-dark);">Ready to Deploy?</h2>
+                <p style="color: var(--text-muted); font-size: 1.1rem;">Secure your spot in the Masterclass and Shadowing Program today.</p>
+            </div>
+
+            <div class="pricing-card fade-in">
+                <div class="popular-tag">Full Access + Mentorship</div>
+                <div class="text-center" style="border-bottom: 1px solid var(--border-color); padding-bottom: 30px;">
+                    <i class="fas fa-chess-queen" style="font-size: 3rem; color: var(--primary-color); margin-bottom: 15px;"></i>
+                    <h3 style="font-size: 2rem; color: var(--navy-dark);">Master Curriculum Enrollment</h3>
+                    <div class="price">
+                        <span class="amount">$749.99</span>
+                        <span class="period">One-time payment for lifetime access & shadowing.</span>
+                    </div>
+                    <p style="color: var(--primary-color); font-weight: 600; margin-top: 10px;">Flexible monthly payment plans available at checkout.</p>
+                </div>
+                
+                <ul class="check-list-grid">
+                    <li><i class="fas fa-check"></i> Complete UEI, CAGE & SAM.gov Setup</li>
+                    <li><i class="fas fa-check"></i> Digital Ecosystem & Branding Blueprints</li>
+                    <li><i class="fas fa-check"></i> Technical Proposal Templates</li>
+                    <li><i class="fas fa-check"></i> Solicitation Breakdown Strategies</li>
+                    <li><i class="fas fa-check"></i> Direct Support & Mentorship Access</li>
+                    <li><i class="fas fa-check"></i> Sub-Contractor Pipeline Evaluation</li>
+                </ul>
+
+                <div class="text-center" style="margin-top: 40px;">
+                    <a href="store.html" class="btn btn-primary" style="padding: 18px 50px; font-size: 1.2rem; width: 100%; max-width: 400px; box-shadow: 0 10px 20px rgba(255, 102, 179, 0.3);">Initialize Enrollment</a>
+                    <p style="margin-top: 15px; font-size: 0.9rem; color: var(--text-muted);">Secure checkout via Stripe. 100% Satisfaction Guarantee.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">
+                        <img src="https://unwellbutrin.art/SITE%20MEDIA/PNKPLLD.png" alt="PINK PILLED Logo" class="logo-img" onerror="this.src='https://placehold.co/80x80/ff66b3/ffffff?text=PP'">
+                        <span>PINK PILLED<span class="dot">™</span></span>
+                    </a>
+                    <p>Non-Traditional Federal Prime Contracting. Built for the mission, designed for success.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Capabilities</h4>
+                    <ul>
+                        <li><a href="services.html">Talent Acquisition</a></li>
+                        <li><a href="services.html">Rapid R&D</a></li>
+                        <li><a href="services.html">Project Management</a></li>
+                        <li><a href="contractor.html">Training Modules</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Organization</h4>
+                    <ul>
+                        <li><a href="about.html">Mission & Story</a></li>
+                        <li><a href="#">Compliance</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Legal Statement</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 PINK PILLED™. All rights reserved.</p>
+                <div style="display: flex; gap: 20px;">
+                    <span>CAGE Code: 180J1</span>
+                    <span>UEI: SJP5WQE3EDG7</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => { 
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.15 });
+            
+            document.querySelectorAll('.fade-in, .module-step').forEach(el => observer.observe(el));
+
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    e.preventDefault();
+                    const targetEl = document.querySelector(targetId);
+                    if (targetEl) {
+                        const navHeight = document.querySelector('.navbar').offsetHeight;
+                        const targetPos = targetEl.getBoundingClientRect().top + window.pageYOffset - navHeight;
+                        window.scrollTo({ top: targetPos, behavior: 'smooth' });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Research & Development at PINK PILLED™ - Prime Contracting for Bioinformatics and securing non-dilutive funding for Technological Surprise.">
+    <title>Research & Development | PINK PILLED™</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://unwellbutrin.art/SITE%20MEDIA/PNKPLLD.png">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-color: #ff66b3;
+            --primary-dark: #ff4da6;
+            --primary-light: #ffcce5;
+            --secondary-color: #10B981;
+            --navy-dark: #0a192f;
+            --text-color: #1F2937;
+            --text-muted: #6B7280;
+            --bg-white: #FFFFFF;
+            --bg-light: #F9FAFB;
+            --border-color: #E5E7EB;
+            --font-main: 'Inter', sans-serif;
+            --transition: all 0.3s ease;
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--font-main); color: var(--text-color); line-height: 1.6; background-color: var(--bg-white); -webkit-font-smoothing: antialiased; }
+        a { text-decoration: none; color: inherit; transition: var(--transition); }
+        ul { list-style: none; }
+        
+        .container { width: 90%; max-width: 1200px; margin: 0 auto; padding: 0 15px; }
+        .section-padding { padding: 100px 0; }
+        .bg-light { background-color: var(--bg-light); }
+        .bg-dark { background-color: var(--navy-dark); color: white; }
+        .text-center { text-align: center; }
+
+        /* Navbar */
+        .navbar { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; background-color: white; padding: 8px 0; border-bottom: 1px solid var(--border-color); box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.4rem; font-weight: 800; color: var(--primary-color); display: flex; align-items: center; gap: 15px; }
+        .logo-img { height: 80px; width: auto; object-fit: contain; }
+        .logo .dot { color: var(--primary-color); }
+        .nav-links { display: flex; align-items: center; gap: 30px; }
+        .nav-links a { font-weight: 500; color: var(--text-color); font-size: 0.95rem; }
+        .nav-links a:hover, .nav-links a.active { color: var(--primary-color); }
+
+        /* Buttons */
+        .btn { display: inline-block; padding: 14px 32px; border-radius: 8px; font-weight: 600; cursor: pointer; transition: var(--transition); border: 2px solid transparent; text-align: center; }
+        .btn-primary { background-color: var(--primary-color); color: white; }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(255, 102, 179, 0.3); }
+        .btn-sm { padding: 10px 24px; font-size: 0.9rem; }
+        .btn-outline-light { border: 2px solid white; color: white; background: transparent; }
+        .btn-outline-light:hover { background: white; color: var(--navy-dark); }
+
+        /* Page Header - Dark Theme for R&D */
+        .page-header {
+            padding: 180px 0 100px;
+            background: radial-gradient(circle at top right, #1b2c45, var(--navy-dark) 60%);
+            color: white;
+            text-align: center;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .page-title {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+        .page-title span { color: var(--primary-color); text-shadow: 0 0 20px rgba(255, 102, 179, 0.4); }
+        .page-subtitle { font-size: 1.25rem; color: #9CA3AF; max-width: 800px; margin: 0 auto; }
+
+        /* Split Content Grid */
+        .split-section { padding: 100px 0; }
+        .split-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+        .split-grid.reverse { direction: rtl; }
+        .split-grid.reverse > * { direction: ltr; }
+        
+        .content-block h2 { font-size: 2.2rem; color: var(--navy-dark); margin-bottom: 25px; line-height: 1.2; }
+        .content-block h2.dark-mode { color: white; }
+        .content-block p { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 20px; }
+        .content-block p.dark-mode { color: #D1D5DB; }
+        
+        .accent-label {
+            display: inline-block;
+            background: var(--primary-light);
+            color: var(--primary-dark);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+
+        .visual-block { position: relative; }
+        .visual-block img { width: 100%; border-radius: 20px; box-shadow: var(--shadow-lg); }
+        .visual-overlay {
+            position: absolute;
+            bottom: -20px;
+            left: -20px;
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: var(--shadow-lg);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border: 1px solid var(--border-color);
+        }
+        .visual-overlay i { font-size: 2rem; color: var(--primary-color); }
+        .visual-overlay div { font-weight: 600; color: var(--navy-dark); font-size: 0.9rem; line-height: 1.2; }
+
+        /* Pitch / Pitch Deck Section */
+        .pitch-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        .pitch-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 16px;
+            transition: var(--transition);
+        }
+        .pitch-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--primary-color);
+            box-shadow: 0 10px 30px rgba(255, 102, 179, 0.15);
+        }
+        .pitch-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        .pitch-card h3 { color: white; margin-bottom: 15px; font-size: 1.4rem; }
+        .pitch-card p { color: #9CA3AF; font-size: 1.05rem; }
+
+        /* Footer */
+        .footer { padding-top: 80px; border-top: 1px solid var(--border-color); background: white; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; padding-bottom: 60px; }
+        .footer-brand p { color: var(--text-muted); margin-top: 15px; font-size: 0.95rem; }
+        .footer-links h4 { font-size: 1.1rem; margin-bottom: 20px; }
+        .footer-links ul li { margin-bottom: 12px; }
+        .footer-links ul li a { color: var(--text-muted); font-size: 0.9rem; }
+        .footer-links ul li a:hover { color: var(--primary-color); }
+        .footer-bottom { border-top: 1px solid var(--border-color); padding: 30px 0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; font-size: 0.9rem; color: var(--text-muted); }
+
+        @media (max-width: 991px) {
+            .split-grid, .split-grid.reverse { grid-template-columns: 1fr; }
+            .visual-overlay { bottom: 10px; left: 10px; right: 10px; justify-content: center; }
+            .page-title { font-size: 2.8rem; }
+        }
+
+        .fade-in { opacity: 0; transform: translateY(20px); transition: 0.6s ease-out; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <img src="https://unwellbutrin.art/SITE%20MEDIA/PNKPLLD.png" alt="PINK PILLED Logo" class="logo-img" onerror="this.src='https://placehold.co/80x80/ff66b3/ffffff?text=PP'">
+                <span>PINK PILLED<span class="dot">™</span></span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="research.html" class="active">Research & Development</a></li>
+                <li><a href="index.html#contact" class="btn btn-primary btn-sm" style="color: white;">Become a Contractor</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <div class="container">
+            <h1 class="page-title fade-in">Engineering <span>Technological Surprise</span></h1>
+            <p class="page-subtitle fade-in">Operating at the intersection of biological data, defense acquisition, and non-traditional commercial innovation. We bridge the gap between radical ideas and federal deployment.</p>
+        </div>
+    </header>
+
+    <section class="split-section">
+        <div class="container">
+            <div class="split-grid">
+                <div class="content-block fade-in">
+                    <span class="accent-label">Federal Prime Contracting</span>
+                    <h2>Bioinformatics & Biosurveillance</h2>
+                    <p>The landscape of modern warfare and national security is increasingly biological. PINK PILLED™ serves as a highly capable Prime Contractor navigating complex solicitations across the DoD, NIH, DHA, and other federal agencies.</p>
+                    <p>We architect genomic data pipelines, develop biological threat models, and optimize human performance datasets. By combining massive data analytics with life sciences, we provide actionable, mission-critical intelligence that keeps the United States ahead of near-peer adversaries.</p>
+                    <p style="font-weight: 600; color: var(--navy-dark); margin-top: 20px;">
+                        <i class="fas fa-check-circle" style="color: var(--secondary-color); margin-right: 8px;"></i> Rapid prototyping for bio-threat detection.<br>
+                        <i class="fas fa-check-circle" style="color: var(--secondary-color); margin-right: 8px;"></i> Curation of elite, cleared life-science talent.<br>
+                        <i class="fas fa-check-circle" style="color: var(--secondary-color); margin-right: 8px;"></i> Compliance-first data architecture.
+                    </p>
+                </div>
+                <div class="visual-block fade-in">
+                    <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&q=80&w=800" alt="Bioinformatics Interface" onerror="this.src='https://placehold.co/800x600/e0e7ff/4f46e5?text=Genomic+Data'">
+                    <div class="visual-overlay">
+                        <i class="fas fa-dna"></i>
+                        <div>Advanced Analytics<br>Ready for Deployment</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="split-section bg-light">
+        <div class="container">
+            <div class="split-grid reverse">
+                <div class="content-block fade-in">
+                    <span class="accent-label">Scouting & Discovery</span>
+                    <h2>Hunting for Asymmetric Advantage</h2>
+                    <p>Technological surprise doesn't usually come from legacy defense contractors. It comes from non-traditional creators, garage inventors, start-ups, and marginalized communities operating outside the standard federal ecosystem.</p>
+                    <p>Our mission is to scout these hidden brilliant minds. We identify disruptive technologies—from AI and material sciences to advanced software—before our adversaries do. We actively seek out non-traditional civilians and transition their innovations from the commercial sector into the hands of the warfighter.</p>
+                </div>
+                <div class="visual-block fade-in">
+                    <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=800" alt="Global Tech Network" onerror="this.src='https://placehold.co/800x600/f3f4f6/6B7280?text=Tech+Scouting'">
+                    <div class="visual-overlay" style="left: auto; right: -20px;">
+                        <i class="fas fa-satellite-dish"></i>
+                        <div>Identifying Disruptive<br>Commercial Tech</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="split-section bg-dark">
+        <div class="container">
+            <div class="text-center fade-in" style="margin-bottom: 60px;">
+                <span class="accent-label" style="background: rgba(255,102,179,0.2); color: var(--primary-light);">The Pitch</span>
+                <h2 style="font-size: 2.5rem; margin-top: 15px;">Keep Your Equity. Fund Your Mission.</h2>
+                <p style="color: #9CA3AF; max-width: 700px; margin: 0 auto; font-size: 1.1rem;">You built something revolutionary. Don't let venture capitalists dilute your ownership, and don't let federal bureaucracy stall your progress.</p>
+            </div>
+
+            <div class="pitch-grid">
+                <div class="pitch-card fade-in">
+                    <i class="fas fa-hand-holding-usd pitch-icon"></i>
+                    <h3>Non-Dilutive Funding</h3>
+                    <p>We target immense pools of federal R&D capital—specifically SBIRs, STTRs, and grants. This is non-dilutive funding, meaning the government funds your research, but you keep 100% of your company's equity and IP rights.</p>
+                </div>
+                <div class="pitch-card fade-in">
+                    <i class="fas fa-project-diagram pitch-icon"></i>
+                    <h3>Let Us Be Your Project Manager</h3>
+                    <p>The federal acquisition landscape (especially DARPA and DoD OTAs) is a minefield of red tape, compliance regulations, and complex proposal writing. We step in as your dedicated Project Manager and Prime Contractor partner.</p>
+                </div>
+                <div class="pitch-card fade-in">
+                    <i class="fas fa-rocket pitch-icon"></i>
+                    <h3>Direct to DARPA & Beyond</h3>
+                    <p>You focus on the science and the technology. We focus on translating your genius into "government-speak," managing the Consortiums, writing the technical proposals, and securing the bag. We navigate the Valley of Death so you don't have to.</p>
+                </div>
+            </div>
+            
+            <div class="text-center fade-in" style="margin-top: 60px;">
+                <h4 style="margin-bottom: 20px; font-weight: 500;">Do you have a prototype, concept, or tech that changes the game?</h4>
+                <a href="index.html#contact" class="btn btn-primary" style="margin-right: 15px;">Submit Tech for Review</a>
+                <a href="services.html" class="btn btn-outline-light">View Our PM Capabilities</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">
+                        <img src="https://unwellbutrin.art/SITE%20MEDIA/PNKPLLD.png" alt="PINK PILLED Logo" class="logo-img" onerror="this.src='https://placehold.co/80x80/ff66b3/ffffff?text=PP'">
+                        <span>PINK PILLED<span class="dot">™</span></span>
+                    </a>
+                    <p>Non-Traditional Federal Prime Contracting. Built for the mission, designed for success.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Capabilities</h4>
+                    <ul>
+                        <li><a href="services.html">Talent Acquisition</a></li>
+                        <li><a href="services.html">Rapid R&D</a></li>
+                        <li><a href="services.html">Project Management</a></li>
+                        <li><a href="index.html#pricing">Training Modules</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Organization</h4>
+                    <ul>
+                        <li><a href="about.html">Mission & Story</a></li>
+                        <li><a href="#">Compliance</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Legal Statement</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 PINK PILLED™. All rights reserved.</p>
+                <div style="display: flex; gap: 20px;">
+                    <span>CAGE Code: 180J1</span>
+                    <span>UEI: SJP5WQE3EDG7</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => { 
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.15 });
+            
+            document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+        });
+    </script>
+</body>
+</html>
