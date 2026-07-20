@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Secure Onboarding Dossier for the PINK PILLED™ Future CEO Program.">
+    <title>Secure Enrollment Dossier | PINK PILLED™</title>
+    
+    <link rel="icon" type="image/png" href="PINKPILLED_Logo.png">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-color: #ff66b3;
+            --primary-dark: #ff4da6;
+            --primary-light: #ffcce5;
+            --secondary-color: #10B981;
+            --navy-dark: #0a192f;
+            --navy-light: #112240;
+            --text-color: #1F2937;
+            --text-muted: #6B7280;
+            --bg-white: #FFFFFF;
+            --bg-light: #F9FAFB;
+            --border-color: #E5E7EB;
+            --font-main: 'Inter', sans-serif;
+            --transition: all 0.3s ease;
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--font-main); color: var(--text-color); line-height: 1.6; background-color: var(--bg-light); -webkit-font-smoothing: antialiased; }
+        a { text-decoration: none; color: inherit; transition: var(--transition); }
+        ul { list-style: none; }
+        
+        .container { width: 90%; max-width: 1200px; margin: 0 auto; padding: 0 15px; }
+
+        #security-gate {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100vh;
+            background: linear-gradient(135deg, var(--navy-dark) 0%, #060f1c 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.6s ease, visibility 0.6s ease;
+        }
+
+        .gate-card {
+            background: white;
+            padding: 50px;
+            border-radius: 16px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            max-width: 450px;
+            width: 90%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gate-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 4px;
+            background: var(--primary-color);
+        }
+
+        .gate-icon {
+            width: 70px; height: 70px;
+            background: var(--primary-light);
+            color: var(--primary-color);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 2rem;
+            margin: 0 auto 20px;
+        }
+
+        .gate-card h2 { color: var(--navy-dark); font-size: 1.8rem; margin-bottom: 10px; }
+        .gate-card p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 30px; }
+
+        .password-input-group {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .password-input-group input {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 1rem;
+            outline: none;
+            transition: var(--transition);
+            font-family: monospace;
+            letter-spacing: 2px;
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        .password-input-group input:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(255, 102, 179, 0.2);
+        }
+
+        #auth-error {
+            color: #EF4444; /* Red */
+            font-size: 0.85rem;
+            margin-bottom: 20px;
+            font-weight: 500;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        #auth-error.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .shake {
+            animation: shake 0.4s cubic-bezier(.36,.07,.19,.97) both;
+        }
+
+        @keyframes shake {
+            10%, 90% { transform: translate3d(-1px, 0, 0); }
+            20%, 80% { transform: translate3d(2px, 0, 0); }
+            30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
+            40%, 60% { transform: translate3d(4px, 0, 0); }
+        }
+
+        .btn { display: inline-block; padding: 14px 32px; border-radius: 8px; font-weight: 600; cursor: pointer; transition: var(--transition); border: none; text-align: center; width: 100%; }
+        .btn-primary { background-color: var(--primary-color); color: white; }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(255, 102, 179, 0.3); }
+
+        .navbar { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; background-color: white; padding: 8px 0; border-bottom: 1px solid var(--border-color); box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.4rem; font-weight: 800; color: var(--primary-color); display: flex; align-items: center; gap: 15px; }
+        .logo-img { height: 80px; width: auto; object-fit: contain; }
+        .logo .dot { color: var(--primary-color); }
+        
+        .nav-links { display: flex; align-items: center; gap: 30px; }
+        .nav-links a { font-weight: 500; color: var(--text-color); font-size: 0.95rem; }
+        .nav-links a:hover, .nav-links a.active { color: var(--primary-color); }
+        .btn-sm { padding: 10px 24px; font-size: 0.9rem; width: auto; }
+
+        #main-content {
+            display: none; /* Hidden until authenticated */
+            opacity: 0;
+            transition: opacity 0.8s ease;
+        }
+
+        .page-header {
+            padding: 160px 0 60px;
+            background: linear-gradient(135deg, var(--navy-dark) 0%, #1b2c45 100%);
+            color: white;
+            text-align: center;
+            border-bottom: 4px solid var(--primary-color);
+        }
+        
+        .page-title { font-size: 3rem; margin-bottom: 15px; font-weight: 800; }
+        .page-subtitle { font-size: 1.1rem; color: #D1D5DB; max-width: 700px; margin: 0 auto; line-height: 1.6; }
+
+        .form-section { padding: 80px 0; }
+        .dossier-wrapper {
+            background: white;
+            border-radius: 16px;
+            box-shadow: var(--shadow-lg);
+            padding: 50px;
+            max-width: 800px;
+            margin: 0 auto;
+            border: 1px solid var(--border-color);
+        }
+
+        .form-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .form-header h3 { color: var(--navy-dark); font-size: 1.8rem; margin-bottom: 10px; }
+        .form-header p { color: var(--text-muted); }
+
+        .form-group { margin-bottom: 25px; }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--navy-dark);
+            font-size: 0.95rem;
+        }
+        
+        .form-group label span.required { color: var(--primary-color); }
+        
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group input[type="tel"],
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: var(--font-main);
+            transition: var(--transition);
+            background-color: var(--bg-light);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            background-color: white;
+            box-shadow: 0 0 0 3px rgba(255, 102, 179, 0.1);
+        }
+
+        .form-group textarea { resize: vertical; min-height: 120px; }
+        .form-text { font-size: 0.85rem; color: var(--text-muted); margin-top: 6px; }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .form-row-3 {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 20px;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            background: var(--bg-light);
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+        .checkbox-group input[type="checkbox"] {
+            margin-top: 4px;
+            width: 18px; height: 18px;
+            accent-color: var(--primary-color);
+        }
+        .checkbox-group label { margin-bottom: 0; font-weight: 500; font-size: 0.9rem; cursor: pointer; }
+
+        .section-title {
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            margin: 40px 0 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+        }
+        .section-title i { font-size: 1rem; }
+
+        .footer { padding-top: 80px; border-top: 1px solid var(--border-color); background: white; margin-top: 80px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; padding-bottom: 60px; }
+        .footer-brand p { color: var(--text-muted); margin-top: 15px; font-size: 0.95rem; }
+        .footer-links h4 { font-size: 1.1rem; margin-bottom: 20px; }
+        .footer-links ul li { margin-bottom: 12px; }
+        .footer-links ul li a { color: var(--text-muted); font-size: 0.9rem; }
+        .footer-links ul li a:hover { color: var(--primary-color); }
+        .footer-bottom { border-top: 1px solid var(--border-color); padding: 30px 0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; font-size: 0.9rem; color: var(--text-muted); }
+
+        @media (max-width: 768px) {
+            .form-row, .form-row-3 { grid-template-columns: 1fr; gap: 0; }
+            .dossier-wrapper { padding: 30px 20px; }
+            .nav-links { display: none; } /* Simplified mobile nav for forms */
+        }
+    </style>
+</head>
+<body>
+
+    <div id="security-gate">
+        <div class="gate-card" id="gate-card-element">
+            <div class="gate-icon"><i class="fas fa-lock"></i></div>
+            <h2>Restricted Access</h2>
+            <p>Please enter the enrollment code provided during your Stripe checkout to access your initialization dossier.</p>
+            
+            <div class="password-input-group">
+                <input type="text" id="enrollment-code" placeholder="ENTER CODE" autocomplete="off">
+            </div>
+            
+            <div id="auth-error"><i class="fas fa-exclamation-circle"></i> <span>Invalid Code. Please verify your receipt.</span></div>
+            
+            <button class="btn btn-primary" onclick="verifyCode()">Authenticate & Unlock</button>
+            <p style="margin-top: 20px; font-size: 0.8rem; color: var(--text-muted);">Lost your code? Contact support.</p>
+        </div>
+    </div>
+
+    <div id="main-content">
+        
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="container nav-container">
+                <a href="index.html" class="logo">
+                    <img src="PINKPILLED_Logo.png" alt="PINK PILLED Logo" class="logo-img" onerror="this.src='https://placehold.co/80x80/ff66b3/ffffff?text=PP'">
+                    <span>PINK PILLED<span class="dot">™</span></span>
+                </a>
+                <ul class="nav-links">
+                    <li><a href="http://pinkpilled.life/about.html">About</a></li>
+                    <li><a href="http://pinkpilled.life/capabilities.html">Services</a></li>
+                    <li><a href="http://pinkpilled.life/research.html">Research &amp; Development</a></li>
+                    <li><a href="become_a_contractor.html" class="btn btn-primary btn-sm" style="color: white;">Become a Contractor</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Header -->
+        <header class="page-header">
+            <div class="container">
+                <h1 class="page-title">Initialization <span>Dossier</span></h1>
+                <p class="page-subtitle">Welcome to the ecosystem. To begin the Future CEO Training & Shadow Program, please complete this intake profile accurately. This data allows our executive team to tailor your shadow experience.</p>
+            </div>
+        </header>
+
+        <!-- Form Section -->
+        <section class="form-section container">
+            <div class="dossier-wrapper">
+                <div class="form-header">
+                    <h3>Executive Profiling</h3>
+                    <p>All fields marked with a pink asterisk (<span style="color: var(--primary-color);">*</span>) are mandatory for compliance.</p>
+                </div>
+
+                <!-- Formspree Integration -->
+                <form action="https://formspree.io/f/mbdnyavl" method="POST" id="onboarding-form">
+                    
+                    <div class="section-title"><i class="fas fa-user-tie"></i> Executive Details</div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">First Name <span class="required">*</span></label>
+                            <input type="text" id="firstName" name="First Name" required placeholder="Jane">
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name <span class="required">*</span></label>
+                            <input type="text" id="lastName" name="Last Name" required placeholder="Doe">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">Official Contact Email <span class="required">*</span></label>
+                            <input type="email" id="email" name="Email" required placeholder="jane@example.com">
+                            <div class="form-text">We will use this to grant you LMS & curriculum access.</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Direct Phone Number <span class="required">*</span></label>
+                            <input type="tel" id="phone" name="Phone" required placeholder="(555) 000-0000">
+                        </div>
+                    </div>
+
+                    <div class="form-row-3">
+                        <div class="form-group">
+                            <label for="city">City <span class="required">*</span></label>
+                            <input type="text" id="city" name="City" required placeholder="Miami">
+                        </div>
+                        <div class="form-group">
+                            <label for="state">State <span class="required">*</span></label>
+                            <input type="text" id="state" name="State" required placeholder="FL">
+                        </div>
+                        <div class="form-group">
+                            <label for="zipCode">Zip Code <span class="required">*</span></label>
+                            <input type="text" id="zipCode" name="Zip Code" required placeholder="33101">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="linkedin">LinkedIn Profile URL</label>
+                            <input type="text" id="linkedin" name="LinkedIn URL" placeholder="https://linkedin.com/in/yourprofile">
+                        </div>
+                        <div class="form-group">
+                            <label for="source">How did you hear about us? <span class="required">*</span></label>
+                            <select id="source" name="Source" required>
+                                <option value="" disabled selected>Select an option...</option>
+                                <option value="LinkedIn">LinkedIn</option>
+                                <option value="TikTok">TikTok</option>
+                                <option value="YouTube">YouTube</option>
+                                <option value="Recruited by CEO">Recruited by CEO</option>
+                                <option value="Recruited by Recruiter">Recruited by Recruiter</option>
+                                <option value="Indeed">Indeed</option>
+                                <option value="Job site">Job site (Other)</option>
+                                <option value="Google Search">Google Search</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="section-title"><i class="fas fa-building"></i> Current Entity Status</div>
+                    <div class="form-group">
+                        <label for="entityStatus">Do you currently have an established business entity? <span class="required">*</span></label>
+                        <select id="entityStatus" name="Entity Status" required>
+                            <option value="" disabled selected>Select an option...</option>
+                            <option value="No, starting from scratch">No, I am starting completely from scratch (Module 1 focused).</option>
+                            <option value="Yes, LLC or S-Corp established">Yes, I have an LLC or S-Corp registered.</option>
+                            <option value="Yes, registered in SAM.gov">Yes, and I am already registered in SAM.gov.</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="cageCode">CAGE Code / UEI (If applicable)</label>
+                        <input type="text" id="cageCode" name="CAGE / UEI" placeholder="Leave blank if you don't have one yet">
+                        <div class="form-text">If you selected that you are registered in SAM.gov, please provide your identifiers.</div>
+                    </div>
+
+                    <div class="section-title"><i class="fas fa-bullseye"></i> Operational Intent</div>
+                    <div class="form-group">
+                        <label for="capabilities">Desired Capabilities / Niche <span class="required">*</span></label>
+                        <textarea id="capabilities" name="Desired Niche" required placeholder="What type of services or products are you looking to provide to the federal government? (e.g., IT staffing, logistics, janitorial, consulting...)"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="goals">Primary Objective for the Shadow Program <span class="required">*</span></label>
+                        <textarea id="goals" name="Primary Objective" required placeholder="What is the #1 milestone you want to achieve by the end of this curriculum and shadow phase?"></textarea>
+                    </div>
+
+                    <div class="section-title"><i class="fas fa-file-signature"></i> Compliance & Acknowledgment</div>
+                    <div class="form-group checkbox-group">
+                        <input type="checkbox" id="ndaAgree" name="NDA Agreement" required>
+                        <label for="ndaAgree">I acknowledge that the Shadowing Phase involves access to proprietary PINK PILLED™ operational data, and I agree to sign a Non-Disclosure Agreement (NDA) prior to entering Phase 06.</label>
+                    </div>
+                    
+                    <div class="form-group checkbox-group">
+                        <input type="checkbox" id="infoTrue" name="Accuracy Acknowledgment" required>
+                        <label for="infoTrue">I certify that the information provided in this dossier is accurate to the best of my knowledge.</label>
+                    </div>
+
+                    <div style="margin-top: 40px; text-align: center;">
+                        <button type="submit" class="btn btn-primary" style="font-size: 1.1rem; padding: 18px 40px; max-width: 300px;">Submit Dossier & Begin</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-grid">
+                    <div class="footer-brand">
+                        <a href="index.html" class="logo">
+                            <img src="PINKPILLED_Logo.png" alt="PINK PILLED Logo" class="logo-img" onerror="this.src='https://placehold.co/80x80/ff66b3/ffffff?text=PP'">
+                            <span>PINK PILLED<span class="dot">™</span></span>
+                        </a>
+                        <p>Non-Traditional Federal Prime Contracting. Built for the mission, designed for success.</p>
+                    </div>
+                    <div class="footer-links">
+                        <h4>Capabilities</h4>
+                        <ul>
+                            <li><a href="talent_acquisition.html">Talent Acquisition</a></li>
+                            <li><a href="research.html">Rapid R&amp;D</a></li>
+                            <li><a href="capabilities.html">Project Management</a></li>
+                            <li><a href="future_ceo_training.html">Training Modules</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-links">
+                        <h4>Organization</h4>
+                        <ul>
+                            <li><a href="mission.html">Mission &amp; Story</a></li>
+                            <li><a href="compliance_legal_center.html#">Compliance</a></li>
+                            <li><a href="careers.html#">Careers</a></li>
+                            <li><a href="legal_statement_terms.html#">Legal Statement</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2026 PINK PILLED™. All rights reserved.</p>
+                    <div style="display: flex; gap: 20px;">
+                        <span>CAGE Code: 180J1</span>
+                        <span>UEI: SJP5WQE3EDG7</span>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+
+    <script>
+        const CURRENT_ENROLLMENT_CODE = "PNKPLD2026";
+
+        function verifyCode() {
+            const inputField = document.getElementById('enrollment-code');
+            const codeEntered = inputField.value.trim().toUpperCase();
+            const errorDiv = document.getElementById('auth-error');
+            const gateCard = document.getElementById('gate-card-element');
+            const gateOverlay = document.getElementById('security-gate');
+            const mainContent = document.getElementById('main-content');
+
+            // Reset error state
+            errorDiv.classList.remove('visible');
+            gateCard.classList.remove('shake');
+            
+            // Force reflow for animation restart
+            void gateCard.offsetWidth;
+
+            if (codeEntered === CURRENT_ENROLLMENT_CODE) {
+                // Success! Unlock the gate
+                gateOverlay.style.opacity = '0';
+                
+                setTimeout(() => {
+                    gateOverlay.style.display = 'none';
+                    mainContent.style.display = 'block';
+                    
+                    // Small delay to allow display block to render before animating opacity
+                    setTimeout(() => {
+                        mainContent.style.opacity = '1';
+                        window.scrollTo(0,0);
+                    }, 50);
+                }, 600); // Wait for fade out transition
+
+            } else {
+                // Failure - Shake and show error
+                gateCard.classList.add('shake');
+                errorDiv.classList.add('visible');
+                
+                // Clear input after a short delay
+                setTimeout(() => {
+                    inputField.value = '';
+                    inputField.focus();
+                }, 400);
+            }
+        }
+
+        // Allow 'Enter' key to submit
+        document.getElementById('enrollment-code').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                verifyCode();
+            }
+        });
+    </script>
+</body>
+</html>
